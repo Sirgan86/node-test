@@ -2,6 +2,8 @@ const express = require('express');
 const hbs=require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
+
 
 var app=express();
 
@@ -47,13 +49,15 @@ app.use(express.static(__dirname + 'public'));
 app.get('/', (req,res) => {
     //res.send('<h1>Hello express</h1>');
 
-    /*res.send({
+    /*
+    res.send({
         name: 'Figghiozzo',
         likes:[
             "minchie",
             "pelose"
         ]
-    })*/
+    })
+    */
 
     res.render('home.hbs',{
         pageTitle:"home Page1",
@@ -84,6 +88,6 @@ app.get('/bad',(req,res) => {
 
 // __dirname --> path del progetto
 
-app.listen(3000,'localhost', function () {
-    console.log('Server app listening on port 3000!');
+app.listen(port,'localhost', function () {
+    console.log(`Server app listening on port ${port}`);
   });
